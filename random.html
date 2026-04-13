@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>To-Do Liste</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+<h1>To-Do Liste 📝</h1>
+</header>
+
+<main>
+
+<div class="todo-container">
+
+<input type="text"
+id="taskInput"
+placeholder="Neue Aufgabe">
+
+<button onclick="addTask()">
+Hinzufügen
+</button>
+
+<ul id="taskList"></ul>
+
+</div>
+
+<br>
+
+<a href="projects.html">⬅ Zurück zu Projekte</a>
+
+</main>
+
+<script>
+
+let taskList =
+document.getElementById("taskList");
+
+
+// Neue Aufgabe hinzufügen
+
+function addTask() {
+
+let input =
+document.getElementById("taskInput");
+
+if (input.value === "") return;
+
+let li =
+document.createElement("li");
+
+li.innerHTML = `
+<input type="checkbox" class="check">
+
+<span>${input.value}</span>
+
+<button class="delete">❌</button>
+`;
+
+taskList.appendChild(li);
+
+input.value = "";
+
+addEvents();
+
+}
+
+
+// Events für Checkbox & Delete
+
+function addEvents() {
+
+let checks =
+document.querySelectorAll(".check");
+
+let deletes =
+document.querySelectorAll(".delete");
+
+checks.forEach(check => {
+
+check.onchange = function() {
+
+check.nextElementSibling.style.textDecoration =
+check.checked ? "line-through" : "none";
+
+};
+
+});
+
+deletes.forEach(btn => {
+
+btn.onclick = function() {
+
+btn.parentElement.remove();
+
+};
+
+});
+
+}
+
+</script>
+</body>
+</html>

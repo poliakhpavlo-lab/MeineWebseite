@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Passwort Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+<h1>Passwort Generator 🔐</h1>
+</header>
+
+<main>
+
+<div class="password-container">
+
+<label>Länge des Passworts:</label>
+
+<input type="number"
+id="length"
+value="12"
+min="4"
+max="30">
+
+<br><br>
+
+<button onclick="generatePassword()">
+Passwort generieren
+</button>
+
+<p id="password"></p>
+
+</div>
+
+<br>
+
+<a href="projects.html">⬅ Zurück zu Projekte</a>
+
+</main>
+
+<script>
+
+function generatePassword() {
+
+let length =
+document.getElementById("length").value;
+
+let chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
+
+let password = "";
+
+for (let i = 0; i < length; i++) {
+
+password += chars.charAt(
+Math.floor(Math.random() * chars.length)
+);
+
+}
+
+document.getElementById("password").innerText =
+password;
+
+}
+
+</script>
+
+</body>
+</html>

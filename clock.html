@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Zahlenraten Spiel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+<h1>Zahlenraten Spiel 🎮</h1>
+</header>
+
+<main>
+
+<div class="game-container">
+
+<p>Ich denke an eine Zahl zwischen 1 und 100</p>
+
+<input type="number"
+id="guess">
+
+<button onclick="checkGuess()">
+Raten
+</button>
+
+<button onclick="restartGame()">
+Neustart
+</button>
+
+<p id="message"></p>
+
+</div>
+
+<br>
+
+<a href="projects.html">⬅ Zurück zu Projekte</a>
+
+</main>
+
+<script>
+
+let secretNumber =
+Math.floor(Math.random() * 100) + 1;
+
+function checkGuess() {
+
+let guess =
+Number(document.getElementById("guess").value);
+
+let message =
+document.getElementById("message");
+
+if (guess === secretNumber) {
+
+message.innerText =
+"🎉 Richtig!";
+
+}
+
+else if (guess < secretNumber) {
+
+message.innerText =
+"Zu klein!";
+
+}
+
+else {
+
+message.innerText =
+"Zu groß!";
+
+}
+
+}
+
+function restartGame() {
+
+secretNumber =
+Math.floor(Math.random() * 100) + 1;
+
+document.getElementById("message").innerText =
+"Neues Spiel gestartet!";
+
+}
+
+</script>
+
+</body>
+</html>
